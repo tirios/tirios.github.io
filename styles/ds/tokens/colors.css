@@ -1,0 +1,74 @@
+:root{
+/* ---- ink: one cool graphite ramp. The interface is achromatic. ---- */
+--tp-ink-900:#141618;
+--tp-ink-800:#23282C;
+--tp-ink-700:#3A4045;
+--tp-ink-600:#5A6167;
+--tp-ink-500:#6F767C;
+--tp-ink-400:#9BA1A6;
+--tp-ink-300:#C4C9CC;
+--tp-ink-200:#E3E6E8;
+--tp-ink-100:#EFF1F2;
+--tp-ink-050:#F7F8F9;
+--tp-paper:#FFFFFF;
+
+/* ---- the one hue ---- */
+--tp-teal-800:#0A4F49;
+--tp-teal-700:#0B5C56;
+--tp-teal-600:#0F766E;
+--tp-teal-300:#8CC5BF;
+--tp-teal-100:#E4F0EE;
+
+/* ---- data series. Colour belongs to the data, not the chrome. ---- */
+--tp-data-1:#0F766E;
+--tp-data-2:#2F5C7E;
+--tp-data-3:#B07A21;
+--tp-data-4:#A6553F;
+--tp-data-5:#6B4A78;
+--tp-data-6:#5A6167;
+
+/* ---- surfaces ---- */
+--surface-page:var(--tp-paper);
+--surface-panel:var(--tp-paper);
+--surface-sunken:var(--tp-ink-050);
+--surface-well:var(--tp-ink-100);
+--surface-inverse:var(--tp-ink-900);
+--surface-accent-wash:var(--tp-teal-100);
+--surface-overlay:rgba(20,22,24,0.40);
+--surface-plot:var(--tp-paper);
+
+/* ---- ink roles ---- */
+--text-primary:var(--tp-ink-900);
+--text-secondary:var(--tp-ink-600);
+--text-tertiary:var(--tp-ink-500);
+--text-inverse:var(--tp-paper);
+--text-accent:var(--tp-teal-600);
+--text-on-accent:var(--tp-paper);
+--text-link:var(--tp-teal-600);
+--text-link-hover:var(--tp-teal-800);
+--text-disabled:var(--tp-ink-400);
+
+/* ---- rules. Three weights, and that is all. ---- */
+--rule-hair:var(--tp-ink-200);
+--rule-mid:var(--tp-ink-300);
+--rule-ink:var(--tp-ink-900);
+--rule-accent:var(--tp-teal-600);
+
+/* ---- state ---- */
+--accent-action:var(--tp-teal-600);
+--accent-action-hover:var(--tp-teal-700);
+--accent-action-press:var(--tp-teal-800);
+--state-focus:var(--tp-teal-600);
+--state-positive:var(--tp-teal-600);
+--state-caution:var(--tp-data-3);
+--state-critical:var(--tp-data-4);
+--state-neutral:var(--tp-ink-500);
+
+/* ---- plot furniture ---- */
+--plot-axis:var(--tp-ink-300);
+--plot-grid:var(--tp-ink-100);
+--plot-label:var(--tp-ink-500);
+--plot-reference:var(--tp-ink-400);
+--plot-band-strong:0.26; /* @kind other */
+--plot-band-soft:0.12; /* @kind other */
+}

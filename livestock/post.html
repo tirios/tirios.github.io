@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A map of what we count</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root { color-scheme:light; --measure:70ch; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:#FFFFFF; color:#141618;
+  font:17px/1.62 'Schibsted Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+p { margin:0 0 1.1em; text-wrap:pretty; max-width:var(--measure,70ch); }
+h1, h2 { margin:0; font-weight:600; }
+h2 { max-width:22ch; }
+figure { margin:0; }
+figcaption { max-width:var(--measure,70ch); }
+a { color:#0F766E; text-decoration-color:#8CC5BF; text-underline-offset:2px;
+  text-decoration-thickness:1px; }
+a:hover { color:#0A4F49; text-decoration-color:#0A4F49;
+  text-decoration-thickness:1px; }
+sup { font-size:.64em; font-weight:600; padding:.1em .32em; color:#0A4F49;
+  background:#E4F0EE; font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace; font-variant-numeric:tabular-nums; }
+code { font:.86em ui-monospace, SFMono-Regular, Menlo, monospace;
+  background:#F7F8F9; padding:.08em .3em; }
+strong { font-weight:600; }
+table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+ol { margin:0; }
+.st1:hover { background:#0B5C56 !important; }
+.st2:active { background:#0A4F49 !important; }
+.st3:hover { opacity:.94 !important; }
+</style>
+</head>
+<body>
+<div id="post" style="background:#FFFFFF;min-height:100%">
+<article style="max-width:72rem;margin:0 auto;padding:clamp(2.5rem,6vw,5rem) clamp(1.1rem,4vw,2.5rem) 7rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 2.5rem">
+
+<aside style="flex:0 0 11rem;max-width:100%;position:sticky;top:1.75rem;align-self:flex-start;border-top:2px solid #141618;padding-top:1.1rem;margin-bottom:2.5rem">
+<div style="font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#5A6167;margin-bottom:.9rem">Contents</div>
+<nav id="rail" style="display:flex;flex-direction:column;gap:.05rem">
+<a href="#sec-1" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">01</span><span>Overview</span></a>
+<a href="#sec-2" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">02</span><span>Visualising the data</span></a>
+<a href="#sec-3" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">03</span><span>Related work</span></a>
+<a href="#sec-4" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">04</span><span>Data</span></a>
+<a href="#sec-5" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">05</span><span>An interesting catch by Claude</span></a>
+<a href="#sec-6" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">06</span><span>This approach is not all that original</span></a>
+<a href="#sec-7" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">07</span><span>Some potential questions</span></a>
+<a href="#sec-8" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">08</span><span>Closing thoughts</span></a>
+<a href="#sec-9" data-rail="" style="display:flex;gap:.65rem;padding:.36rem .4rem .36rem .7rem;text-decoration:none;color:#6F767C;font-size:12.5px;line-height:1.3;border-left:2px solid transparent;margin-top:.5rem;border-top:1px solid #E3E6E8;padding-top:.7rem"><span data-num="" style="font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;font-weight:600;opacity:.75">09</span><span>Sources</span></a>
+</nav>
+</aside>
+
+<div style="flex:1 1 28rem;min-width:0">
+
+<header style="border-top:2px solid #141618;padding-top:1.1rem;margin-bottom:3.25rem">
+<div>
+<h1 style="font-size:clamp(2.4rem,6.6vw,4.1rem);letter-spacing:-.035em;line-height:.94;text-wrap:balance">A map of what we count</h1>
+<div style="border-top:2px solid #0F766E;background:#F7F8F9;padding:1.1rem 1.25rem 1.25rem;margin-top:2rem;max-width:var(--measure,70ch)">
+<div style="font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;margin-bottom:.7rem">TL;DR</div>
+<p style="margin:0 0 1.1rem;font-size:16px;line-height:1.55;color:#141618;max-width:62ch">I mapped every country's 2022 livestock figure by where the number came from. Of 31.1 billion cattle, sheep, goats, pigs and chickens, 55.1 per cent sit behind an official national count and 35.7 per cent behind an FAO imputation. Chickens are 83.9 per cent of the animals and the worst counted of the five. One row, China's mainland chicken count, is 46.7 per cent of everything imputed. Built with Claude Code in about four and a half hours.</p>
+<a href="map-2022-story.html" class="st1 st2" style="display:inline-flex;align-items:center;gap:.6em;height:36px;padding:0 1rem;border-radius:4px;background:#0F766E;color:#FFFFFF;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap">Open the story map <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</header>
+
+<section style="margin:0">
+<div>
+<p style="font-size:1.16em;line-height:1.55">The AI tools available now to the average person are genuinely remarkable, and I don’t think most people have caught up with what that means, nor used them enough to feel it viscerally. From my own experience, an afternoon with an agentic coding tool covers ground that might have taken me weeks or months. And the output isn’t rubbish either; it’s often better than what I would have produced alone. I have tried to become AI-fluent in this rapidly evolving landscape, and the thing that keeps surprising me is not the code quality, but how cheap the first attempt at <em>any</em> question has become.</p>
+<p>That matters a great deal, I think, for people who want to help animals. Farmed animal advocacy is a small and thinly staffed field. The 211 organisations across 50 countries surveyed for the 2024 State of the Movement report spent US$259.6 million between them, two thirds of them ran on fewer than ten full-time staff, and Animal Charity Evaluators estimates that around 3 per cent of American animal-charity funding goes to farmed animals against roughly 95 per cent for companion animals. <a class="ref" id="r1" href="#s1"><sup>1</sup></a> Much of that work leans on public datasets like the FAO&#x27;s, and Rethink Priorities showed in 2019 that they carry inconsistencies worth checking before decisions are built on them. <a class="ref" id="r2" href="#s2"><sup>2</sup></a></p>
+<p>I care greatly about reducing the suffering animals experience, and my path to engaging with this has been roundabout and thoroughly non-traditional: mechanical engineering to applied maths to Bayesian signal processing on cycling aerodynamics. None of this was overly intentional, but I’m trying to be deliberate about it now (better late than never). This work is the first small piece.</p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">01</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">Overview</h2>
+<p>Below is a small project built with Claude Code over about four and a half hours of active work spread across three days, almost entirely on Opus 5, with one batch of parallel review agents on a second model. <a class="ref" id="r3" href="#s3"><sup>3</sup></a> <a class="ref" id="r4" href="#s4"><sup>4</sup></a> Sixteen typed messages from me, start to finish. <a class="ref" id="r5" href="#s5"><sup>5</sup></a></p>
+<p>It began with nothing more specific than wanting to make an interesting visualisation out of public data. The FAO&#x27;s statistics database came up, and when I went to look at it I found what I presume a lot of people find: it is a serious, carefully built and rich resource, but it is close to impossible to <em>see</em>. <a class="ref" id="r6" href="#s6"><sup>6</sup></a> You select a country, a species and a year, and you read a table. I don’t see in table-space, but perhaps you do, in which case ignore this whole article.</p>
+<p>So the initial goal was modest. Just get that data into a picture. This is a trivial task for anyone who knows how to code, but even for the experienced it does take <em>some</em> amount of time and there are always little bugs along the way. Agentic coding is not without cost to time either, but that cost is lower, and I would argue that is a win in efficiency.</p>
+<p>I’m a big fan of the framing in Oliver Burkeman’s <em>Four Thousand Weeks</em>: you have finite time as a woefully finite human, so you have to make hard decisions about what you put your attention towards, and you must confront the fact that compared to what you could achieve in life you will achieve relatively little. <a class="ref" id="r18" href="#s18"><sup>18</sup></a> All the more reason to focus your attention on things you really care about.</p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">02</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">Visualising the data</h2>
+<figure style="margin:0 0 2rem">
+<a class="map-link st3" href="map-2022.html" style="display:block;position:relative;text-decoration:none;border-top:2px solid #141618;padding-top:.85rem">
+<img src="map-2022.png" alt="World maps of five livestock species in 2022, each country coloured by the provenance flag on its figure" style="width:100%;height:auto;display:block;background:#FFFFFF;border:1px solid #E3E6E8">
+<span style="position:absolute;left:0;bottom:0;background:#141618;color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:.5rem .8rem;display:inline-flex;gap:.55em;align-items:center">Open the interactive map <span style="color:#8CC5BF">↗</span></span>
+</a>
+<figcaption style="margin-top:.7rem;font-size:12.5px;line-height:1.5;color:#5A6167">Cattle, sheep, goats, pigs and chickens, 2022, every country that files a figure. These are animals alive and counted, not animals slaughtered. The palest class means no figure was filed, not that nothing is farmed there.</figcaption>
+</figure>
+<p>Five species, one year, every country that files. The point of drawing it is that the pattern is not visible in a table and is obvious in a picture.</p>
+<p>Of the 31.1 billion cattle, sheep, goats, pigs and chickens counted in 2022, 55.1 per cent sit behind an official national figure, 8.8 per cent behind the country&#x27;s own estimate, 35.7 per cent behind an FAO imputation, and 0.4 per cent behind a figure from an external organisation. <a class="ref" id="r7" href="#s7"><sup>7</sup></a></p>
+<p>That split hides the interesting part, which is the spread between species.</p>
+<figure style="margin:2rem 0 2rem;border-top:2px solid #141618;padding-top:.85rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 566" role="img" aria-label="Farmed animals in 2022 by species and the provenance flag on each country figure" font-family="Schibsted Grotesk, system-ui, sans-serif" style="width:100%;height:auto;display:block">
+<defs><pattern id="cdots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#6B7BF0"/><circle cx="3" cy="3" r="1.15" fill="#FFFFFF" fill-opacity=".55"/></pattern><pattern id="cdiag" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#FFB020"/><rect width="2.2" height="7" fill="#FFFFFF" fill-opacity=".5"/></pattern><pattern id="ccross" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#17A88A"/><path d="M0 3.5h7M3.5 0v7" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="1.3"/></pattern></defs>
+<rect width="900" height="566" fill="#FFFFFF"/>
+<g transform="translate(0,6)">
+<rect x="104" y="0" width="20" height="20" fill="#1E1B2E"/>
+<text x="114" y="15" text-anchor="middle" font-size="16" font-weight="600" fill="#FFFFFF">A</text>
+<text x="132" y="15" font-size="18" fill="#1E1B2E">Official national figure</text>
+<rect x="400" y="0" width="20" height="20" fill="url(#cdots)"/>
+<text x="410" y="15" text-anchor="middle" font-size="16" font-weight="600" fill="#FFFFFF">E</text>
+<text x="428" y="15" font-size="18" fill="#1E1B2E">Country estimate</text>
+<rect x="104" y="28" width="20" height="20" fill="url(#cdiag)"/>
+<text x="114" y="43" text-anchor="middle" font-size="16" font-weight="600" fill="#1E1B2E">I</text>
+<text x="132" y="43" font-size="18" fill="#1E1B2E">FAO imputed</text>
+<rect x="400" y="28" width="20" height="20" fill="url(#ccross)"/>
+<text x="410" y="43" text-anchor="middle" font-size="16" font-weight="600" fill="#1E1B2E">X</text>
+<text x="428" y="43" font-size="18" fill="#1E1B2E">External organisation</text>
+</g>
+<g transform="translate(0,26)">
+<text x="92" y="226.0" text-anchor="end" font-size="20" font-weight="800" fill="#1E1B2E">Chickens</text>
+<text x="92" y="246.0" text-anchor="end" font-size="17" font-family="JetBrains Mono, monospace" fill="#5A6167">26.11 bn</text>
+<text x="92" y="266.0" text-anchor="end" font-size="17" font-family="JetBrains Mono, monospace" fill="#5A6167">83.9%</text>
+<rect x="104.0" y="54.0" width="395.8" height="350.7" rx="3.0" fill="#1E1B2E"><title>Chickens: 51.0% official national figure</title></rect>
+<text x="301.9" y="234.4" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">51%</text>
+<rect x="501.8" y="54.0" width="65.9" height="350.7" rx="3.0" fill="url(#cdots)"><title>Chickens: 8.7% country estimate</title></rect>
+<text x="534.7" y="234.4" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">9%</text>
+<rect x="569.7" y="54.0" width="312.3" height="350.7" rx="3.0" fill="url(#cdiag)"><title>Chickens: 40.3% fao imputed</title></rect>
+<text x="725.8" y="234.4" text-anchor="middle" font-size="22" font-weight="700" fill="#1E1B2E">40%</text>
+<text x="92" y="421.4" text-anchor="end" font-size="16" fill="#1E1B2E"><tspan font-weight="800">Cattle</tspan></text>
+<rect x="104.0" y="407.7" width="577.5" height="20.9" rx="3.0" fill="#1E1B2E"><title>Cattle: 74.3% official national figure</title></rect>
+<rect x="683.5" y="407.7" width="45.6" height="20.9" rx="3.0" fill="url(#cdots)"><title>Cattle: 6.1% country estimate</title></rect>
+<rect x="731.1" y="407.7" width="134.5" height="20.9" rx="3.0" fill="url(#cdiag)"><title>Cattle: 17.5% fao imputed</title></rect>
+<rect x="867.6" y="407.7" width="14.4" height="20.9" rx="3.0" fill="url(#ccross)"><title>Cattle: 2.1% external organisation</title></rect>
+<text x="92" y="443.8" text-anchor="end" font-size="16" fill="#1E1B2E"><tspan font-weight="800">Sheep</tspan></text>
+<rect x="104.0" y="431.6" width="596.3" height="18.0" rx="3.0" fill="#1E1B2E"><title>Sheep: 76.7% official national figure</title></rect>
+<rect x="702.3" y="431.6" width="77.6" height="18.0" rx="3.0" fill="url(#cdots)"><title>Sheep: 10.2% country estimate</title></rect>
+<rect x="781.8" y="431.6" width="70.5" height="18.0" rx="3.0" fill="url(#cdiag)"><title>Sheep: 9.3% fao imputed</title></rect>
+<rect x="854.4" y="431.6" width="27.6" height="18.0" rx="3.0" fill="url(#ccross)"><title>Sheep: 3.8% external organisation</title></rect>
+<text x="92" y="463.3" text-anchor="end" font-size="16" fill="#1E1B2E"><tspan font-weight="800">Goats</tspan></text>
+<rect x="104.0" y="452.6" width="496.4" height="15.0" rx="3.0" fill="#1E1B2E"><title>Goats: 63.9% official national figure</title></rect>
+<rect x="602.4" y="452.6" width="146.2" height="15.0" rx="3.0" fill="url(#cdots)"><title>Goats: 19.0% country estimate</title></rect>
+<rect x="750.6" y="452.6" width="103.3" height="15.0" rx="3.0" fill="url(#cdiag)"><title>Goats: 13.5% fao imputed</title></rect>
+<rect x="855.9" y="452.6" width="26.9" height="15.0" rx="3.0" fill="url(#ccross)"><title>Goats: 3.7% external organisation</title></rect>
+<text x="92" y="480.5" text-anchor="end" font-size="16" fill="#1E1B2E"><tspan font-weight="800">Pigs</tspan></text>
+<rect x="104.0" y="470.6" width="737.4" height="13.4" rx="3.0" fill="#1E1B2E"><title>Pigs: 94.8% official national figure</title></rect>
+<rect x="843.4" y="470.6" width="2.7" height="13.4" rx="3.0" fill="url(#cdots)"><title>Pigs: 0.6% country estimate</title></rect>
+<rect x="848.1" y="470.6" width="34.7" height="13.4" rx="3.0" fill="url(#cdiag)"><title>Pigs: 4.7% fao imputed</title></rect>
+</g>
+<text x="104" y="538" font-size="17" font-family="JetBrains Mono, monospace" fill="#5A6167" letter-spacing=".04em">ROW HEIGHT IS THE SHARE OF ALL 31.1 BILLION ANIMALS</text>
+<text x="104" y="560" font-size="17" font-family="JetBrains Mono, monospace" fill="#5A6167" letter-spacing=".04em">ROW WIDTH IS ALWAYS 100 PER CENT &#183; FAOSTAT 2022</text>
+</svg>
+<figcaption style="margin-top:.7rem;font-size:12.5px;line-height:1.5;color:#5A6167">Five species in 2022, sized by how many animals they are. Row height is each species’ share of all 31.1 billion; row width is always 100 per cent, split by the flag on each country’s figure.</figcaption>
+</figure>
+<div style="margin:0 0 1.6rem">
+<table>
+<thead><tr>
+<th style="text-align:left;font-weight:400;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#5A6167;padding:0 .7rem .45rem 0;border-bottom:2px solid #141618">Species</th><th style="text-align:right;font-weight:400;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#5A6167;padding:0 .7rem .45rem;border-bottom:2px solid #141618">Head</th><th style="text-align:right;font-weight:400;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#5A6167;padding:0 .7rem .45rem;border-bottom:2px solid #141618">Share of the five</th><th style="text-align:right;font-weight:400;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#5A6167;padding:0 0 .45rem .7rem;border-bottom:2px solid #141618">Official</th>
+</tr></thead>
+<tbody>
+<tr><td style="text-align:left;font-weight:600;font-size:15px;padding:.55rem .7rem .55rem 0;border-bottom:1px solid #E3E6E8">Chickens</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">26.11 bn</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">83.9%</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem 0 .55rem .7rem;border-bottom:1px solid #E3E6E8">51.0%</td></tr>
+<tr><td style="text-align:left;font-weight:600;font-size:15px;padding:.55rem .7rem .55rem 0;border-bottom:1px solid #E3E6E8">Cattle</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">1.56 bn</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">5.0%</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem 0 .55rem .7rem;border-bottom:1px solid #E3E6E8">74.3%</td></tr>
+<tr><td style="text-align:left;font-weight:600;font-size:15px;padding:.55rem .7rem .55rem 0;border-bottom:1px solid #E3E6E8">Sheep</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">1.35 bn</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">4.3%</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem 0 .55rem .7rem;border-bottom:1px solid #E3E6E8">76.7%</td></tr>
+<tr><td style="text-align:left;font-weight:600;font-size:15px;padding:.55rem .7rem .55rem 0;border-bottom:1px solid #E3E6E8">Goats</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">1.14 bn</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">3.6%</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem 0 .55rem .7rem;border-bottom:1px solid #E3E6E8">63.9%</td></tr>
+<tr><td style="text-align:left;font-weight:600;font-size:15px;padding:.55rem .7rem .55rem 0;border-bottom:1px solid #E3E6E8">Pigs</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">0.98 bn</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem .7rem;border-bottom:1px solid #E3E6E8">3.2%</td><td style="text-align:right;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-size:14px;padding:.55rem 0 .55rem .7rem;border-bottom:1px solid #E3E6E8">94.8%</td></tr>
+</tbody>
+</table>
+<p style="margin:.5rem 0 0;text-align:right;font-size:12px;color:#5A6167">Sources <a class="ref" id="r8" href="#s8"><sup>8</sup></a> <a class="ref" id="r9" href="#s9"><sup>9</sup></a></p>
+</div>
+<p>Chickens are 83.9 per cent of these animals and the worst counted of the five. Pigs are the best counted and are about three per cent of the total.</p>
+<p>The imputation turns out to be concentrated rather than spread evenly. One row, China&#x27;s mainland chicken count at 5.19 billion birds, is 46.7 per cent of all the imputed animals in the set. Take that single row out and the official share rises from 55.1 to 66.1 per cent. <a class="ref" id="r10" href="#s10"><sup>10</sup></a> That row was last flagged as an official figure in 1992. <a class="ref" id="r11" href="#s11"><sup>11</sup></a></p>
+<p>Two smaller things I liked. The countries too small to see on a world map are the ones we know least about: of the 192 cattle-reporting areas, the 73 that render smaller than eight pixels square are imputed 34.2 per cent of the time against 16.8 per cent for everyone else. <a class="ref" id="r12" href="#s12"><sup>12</sup></a> And Australia, which I did not expect to be interesting, turns out to be the clearest single case in the dataset. Its cattle and sheep are official, its goats are a country estimate, and its chickens and pigs are FAO imputations, because the Bureau of Statistics abolished the surveys that counted them and has not replaced those counts. <a class="ref" id="r13" href="#s13"><sup>13</sup></a> <a class="ref" id="r14" href="#s14"><sup>14</sup></a></p>
+<p>Real counts do exist. ABARES publishes 2.704 million pigs alive at 30 June 2022, against the FAO&#x27;s imputed 2,552,808. Australian Eggs puts the national layer flock at 24,890,517 hens in June 2025, while the FAO&#x27;s own Australian laying-hen figure has been imputed every year since 2022 and stands at 16.5 million for 2024. <a class="ref" id="r14b" href="#s14"><sup>14</sup></a> No Australian livestock series carries the external-organisation flag in 2021, 2022 or 2023, so those numbers are not reaching the file.</p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">03</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">Related work</h2>
+<p>The Global Burden of Animal Diseases (GBADs) programme publishes great livestock dashboards, and several of them draw a map. <a class="ref" id="r16" href="#s16"><sup>16</sup></a> Every one of those maps colours a quantity. The broadest, on the animal health loss envelope dashboard, offers a choice of five: population, live weight, biomass, the animal health loss envelope, or that envelope per kilogram of biomass. The others colour population. None of them colours the provenance of any of those numbers. The dashboards that do carry flags have no map, and the map that carries five selectable layers carries no flag.</p>
+<p>GBADs does pool flags in one place. Its FAOSTAT Data Visualizer has a view titled &quot;Yearly Percentage of Flags for Asses Across all Countries&quot;, which is a global per-species flag composition as a stacked bar over years. That view counts each country once. Its percentages are exact multiples of one over the number of reporting countries, so a country with ten million cattle and a country with a thousand weigh the same. It says nothing about what share of the world&#x27;s animals sits behind each flag.</p>
+<p>So the two things that are new here are putting the flag on a map, and weighting it by animals rather than by countries.</p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">04</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">Data</h2>
+<p>Figures come from the FAOSTAT bulk download, release 2025-12-31, pinned by SHA-256 so this can be reproduced exactly. <a class="ref" id="r7b" href="#s7"><sup>7</sup></a> FAOSTAT also has a REST API, and it was down every time I tried it, on three separate days and from two different networks. <a class="ref" id="r19" href="#s19"><sup>19</sup></a></p>
+<p>An obvious alternative was the GBADs data portal, which republishes FAOSTAT livestock populations. Its documented endpoint serves a snapshot frozen at February 2022: it stops at 2020, still uses the pre-2022 flag vocabulary, and about five per cent of shared cells differ from the current release. The clearest case is the United States chicken count for 2020, which GBADs reports as 9.22 billion flagged official, whereas FAOSTAT now reports 1.54 billion flagged estimated. That one cell is about a quarter of the animals in the five-species total GBADs reports for 2020. Reading it from the frozen copy would have raised the reported official share by roughly fourteen points, in the flattering direction, on a number wearing an official flag. <a class="ref" id="r17" href="#s17"><sup>17</sup></a></p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">05</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">An interesting catch by Claude</h2>
+<p>The first version of this map drew Taiwan using the Dominican Republic&#x27;s data, on four of the five panels. A manual override used Taiwan&#x27;s FAOSTAT area code where the join needed its M49 code, and 214 happens to be the Dominican Republic&#x27;s M49. Claude had written a coverage check for exactly this class of error, and the check could not see it, because one row failed to match while one extra geometry claimed another country&#x27;s row, so the count came out identical on the broken input and the correct one. What did find it was pointing four independent review agents at the output on different briefs. All four found it. That is the part of this that I would actually recommend to someone else: the value was not in the drafting; it was in being able to afford four adversarial readers on a Sunday afternoon, and in the fact that eight of their own claims were overturned when I went and measured them. <a class="ref" id="r3b" href="#s3"><sup>3</sup></a></p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">06</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">This approach is not all that original</h2>
+<p>In July 2026 Google Research published the Science One Framework, an autonomous research agent built around what it calls a chain of evidence: every claim must have a recorded chain back to a source, and each chain must genuinely support its claim. Its audit re-runs code to confirm that reported numbers reappear, checks that the method described in the text matches the code that ran, and verifies references against academic databases. It is an experimental prototype, demonstrated on optimisation benchmarks and machine-learning competitions, and not something anyone outside the lab can use (yet). <a class="ref" id="r15" href="#s15"><sup>15</sup></a></p>
+<p>I mention it because it is the same idea as this project, arrived at somewhat independently, albeit at a very different scale. Every figure here comes from one file that one script computes; a second script reads the prose back and fails on any number the file does not hold; and a checking page recomputes 48 quantities in your browser. The incident that best matches their method-to-code check is a key named <code>species_matching_fao_world_exactly</code>, computed with a tolerance, which put the word &quot;exactly&quot; into three documents before a fidelity pass caught it.</p>
+<p>Where this project is weaker is that its evidence chains were reconstructed afterwards, by mapping every claim in this post to a source by hand, and three of them did not hold. Theirs are recorded at the moment the claim is made (that is the better design).</p>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">07</div>
+<div style="max-width:56rem">
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.5rem;text-wrap:balance">Some potential questions</h2>
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">Why 2022?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">The most recent substantially filed year. 2020 would have been cleaner for chickens, reconciling within 0.13 per cent against 2.33 per cent. I chose recency over reconciliation, so here is the hole: my 2022 chicken total sits 2.33 per cent below the FAO&#x27;s own world row, because ten European states filed no count that year.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">Why weight by animals, when the flag is a property of a statistical system?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">Because the claim is about animals. Welfare is borne per animal, and the downstream use is a count of animals affected. The country-weighted share answers the statistical-capacity question, and the map prints both. Pigs are the extreme case, 94.8 per cent by head against 64.0 per cent counting each country once.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">What do the flags tell you about accuracy?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">Not that much. A flag is a provenance label, not a quality score. An official figure can be a bad census and an imputed figure can be close to the truth. This project makes no claim that any imputed number is wrong. It measures how much of the world total rests on a number nobody in the country counted, not how far wrong any number is.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">Where is the uncertainty quantification?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">None, deliberately. Every quantity is a ratio of sums over observed rows, so there is no sampling, no parameter and nothing to put an interval on. You could, though, compare two FAOSTAT vintages to measure how far an imputed value moves once the country finally reports, then turn that spread into a credible interval on the world head count.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">Why is Germany pale?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">It filed no 2022 chicken count and the FAO did not impute one. Its series runs unbroken to 2017, then 2020 and 2023, nearest figure 156.3 million, official. Nine other European states are in the same position, 617.8 million birds between them, all official, 2.3 per cent of the world chicken total.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:.35rem 2rem;border-top:1px solid #E3E6E8;border-bottom:1px solid #E3E6E8;padding:1.1rem 0">
+<div style="flex:0 0 14rem;max-width:100%;font-weight:600;font-size:1.02rem;line-height:1.3;letter-spacing:-.02em">How much of this did you write?</div>
+<div style="flex:1 1 20rem;min-width:0;max-width:58ch;font-size:16px">The design decisions, verification and judgement calls are mine. The code was LLM-drafted under my direction, then adversarially reviewed by four independent critics whose findings I re-derived before ranking, which is how the Taiwan defect was caught and eight of their own claims were overturned.</div>
+</div>
+</div>
+</section>
+
+<section style="display:block;border-top:1px solid #E3E6E8;margin:3.5rem 0 0;padding:1.4rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">08</div>
+<div>
+<h2 style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 1.1rem;text-wrap:balance">Closing thoughts</h2>
+<p>This work was done on a Claude Max subscription over about four and a half hours. Given the quality of the outputs and the scope of tasks that are doable, the price of a first attempt seems very low, and that is a tantalising prospect for people working in animal advocacy or using data to try and drive change. The project itself is very minor, literally just a visualisation, but it shows that something that would once have needed a great deal of time, effort or money can now be done in an evening, on a subscription available to the average consumer. It seems the binding constraint is no longer whether you can afford to look into these problems, but whether you decide to point these incredible tools at something that matters. I hope to do this more.</p>
+</div>
+</section>
+
+<section style="display:block;border-top:2px solid #141618;margin:5rem 0 0;padding:1.5rem 0 0">
+<div data-num="" style="font-weight:600;font-size:11px;line-height:1;letter-spacing:.11em;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums;margin-bottom:.8rem">09</div>
+<div style="max-width:60ch">
+<h2 id="sources-heading" style="font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 .4rem">Sources</h2>
+<p style="font-size:12.5px;color:#5A6167;margin:0 0 1.2rem">Hover or focus any marker in the text to read its entry without leaving the paragraph.</p>
+<ol id="sources" style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.55;color:#3A4045">
+  <li id="s1" value="1" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">1</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Stray Dog Institute</strong>, <em>State of the Movement 2024</em>, 28 April 2025. 211 organisations, 50 countries, US$259,585,231 in-scope expenses; 136 of 211 under ten full-time staff. With <strong>Animal Charity Evaluators</strong>, &quot;Why Farmed Animals?&quot; <a href="https://straydoginstitute.org/state-of-the-movement-2024" target="_blank" rel="noopener">straydoginstitute.org/state-of-the-movement-2024</a> and <a href="https://animalcharityevaluators.org/charity-reviews/causes-we-consider/why-farmed-animals/" target="_blank" rel="noopener">animalcharityevaluators.org/charity-reviews/causes-we-consider/why-farmed-animals</a></span></li>
+  <li id="s2" value="2" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">2</span><span style="min-width:0;overflow-wrap:anywhere"><strong>S. Šimčikas</strong>, &quot;Accuracy issues in FAO animal numbers&quot;, Rethink Priorities, 5 December 2019 by the page&#x27;s own byline and metadata; the EA Forum original, at a different URL, is dated 2 December. Checked 11 September 2026. <a href="https://rethinkpriorities.org/research-area/accuracy-issues-in-fao-animal-numbers/" target="_blank" rel="noopener">rethinkpriorities.org/research-area/accuracy-issues-in-fao-animal-numbers</a></span></li>
+  <li id="s3" value="3" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">3</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Session transcripts</strong>, 4 to 7 September 2026. Active work 3 h 50 min counting gaps under five minutes, 4 h 38 min counting gaps under twenty, across four sittings. Longest sitting 3 h 05 min.</span></li>
+  <li id="s4" value="4" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">4</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Session transcripts</strong>, model split. 3,070 assistant messages: 96.3 per cent <code>claude-opus-5</code>, 3.6 per cent <code>claude-fable-5-1</code>. Main thread 100 per cent Opus 5; the Fable work is one workflow of six review agents, about nine minutes on 6 September.</span></li>
+  <li id="s5" value="5" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">5</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Session transcripts</strong>, sixteen human turns across the whole build.</span></li>
+  <li id="s6" value="6" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">6</span><span style="min-width:0;overflow-wrap:anywhere"><strong>FAOSTAT</strong>, Crops and Livestock Products domain. The interface is a country, species and year selector over a table. <a href="https://www.fao.org/faostat/en/#data/QCL" target="_blank" rel="noopener">fao.org/faostat/en/#data/QCL</a></span></li>
+  <li id="s7" value="7" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">7</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>headline.total_head_millions</code> 31136.7, <code>pct_official</code> 55.1, <code>pct_country_estimate</code> 8.78, <code>pct_fao_imputed</code> 35.71, <code>pct_external</code> 0.4. Source archive pinned by SHA-256 at <code>source.archive_sha256</code>, release 2025-12-31.</span></li>
+  <li id="s8" value="8" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">8</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>by_species.&lt;Species&gt;.share_of_set_pct</code>.</span></li>
+  <li id="s9" value="9" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">9</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>headline.chickens_share_of_set</code> 83.9; per-species from <code>by_species.&lt;Species&gt;.head_billions</code> and <code>.pct_official_by_head</code>.</span></li>
+  <li id="s10" value="10" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">10</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>concentration.top3[0]</code> gives China, mainland / Chickens / 5.19 bn / 46.7 per cent of imputed; <code>concentration.excluding_china_chickens.pct_official</code> 66.1.</span></li>
+  <li id="s11" value="11" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">11</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>concentration.china_chickens_flag_history</code>. Last flagged official in 1992, then country estimate and external source alternating to 2014, then imputed continuously from 2015. Computed from the series itself, which is in <code>out/stocks.csv.gz</code> in the same repository.</span></li>
+  <li id="s12" value="12" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">12</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>small_country_bias</code>, species Cattle, threshold 64 px², areas 192, under threshold 73, imputed 34.2 per cent against 16.8. Measured on cattle only.</span></li>
+  <li id="s13" value="13" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">13</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Pipeline output</strong>, <a href="https://github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json" target="_blank" rel="noopener">github.com/tirios/faostat-livestock-flags/blob/master/out/numbers.json</a>: <code>australia</code>. Cattle A, Sheep A, Goats E, Chickens I, Pigs I, for 2022.</span></li>
+  <li id="s14" value="14" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">14</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Australian Bureau of Statistics</strong>, <em>Agricultural Commodities, Australia</em>, 2020-21 (released 26 July 2022, the last Agricultural Census) and 2021-22 (17 January 2023, the final issue). <strong>ABS and ABARES</strong>, <em>Modernising agricultural statistics: update on achievements and remaining data gaps</em>, 29 October 2024, which lists under Remaining data gaps the line &quot;Sheep, pig and poultry livestock counts&quot;. <strong>ABARES</strong> publishes 2.704 million pigs alive at 30 June 2022; <strong>Australian Eggs</strong> puts the national layer flock at 24,890,517 hens in June 2025. The FAO flags for Australia are in <code>out/numbers.json</code> at <code>australia_case</code>. <a href="https://www.abs.gov.au/statistics/industry/agriculture" target="_blank" rel="noopener">abs.gov.au/statistics/industry/agriculture</a></span></li>
+  <li id="s15" value="15" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">15</span><span style="min-width:0;overflow-wrap:anywhere"><strong>Google Research</strong>, &quot;Science One Framework: A verifiable autonomous research framework via Chain-of-Evidence&quot;, blog post dated 30 July 2026. The underlying preprint is arXiv 2605.26340, submitted 25 May 2026 under a different title, &quot;ScientistOne: Towards Human-Level Autonomous Research via Chain-of-Evidence&quot;. Both checked 11 September 2026. <a href="https://research.google/blog/science-one-framework-a-verifiable-autonomous-research-framework-via-chain-of-evidence/" target="_blank" rel="noopener">research.google/blog/science-one-framework-a-verifiable-autonomous-research-framework-via-chain-of-evidence</a></span></li>
+  <li id="s16" value="16" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">16</span><span style="min-width:0;overflow-wrap:anywhere"><strong>GBADs dashboards</strong>, audited live on 10 September 2026. <a href="https://gbadske.org/dashboards/" target="_blank" rel="noopener">gbadske.org/dashboards</a></span></li>
+  <li id="s17" value="17" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">17</span><span style="min-width:0;overflow-wrap:anywhere"><strong>GBADs data portal</strong>, compared against the pinned FAOSTAT bulk on 10 September 2026. <a href="https://gbadske.org/api/dataportal/" target="_blank" rel="noopener">gbadske.org/api/dataportal</a></span></li>
+  <li id="s18" value="18" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">18</span><span style="min-width:0;overflow-wrap:anywhere"><strong>O. Burkeman</strong>, <em>Four Thousand Weeks: Time Management for Mortals</em>, Bodley Head, 2021. The finitude argument runs through the book. The hard choices about attention are Chapter 1, The Limit-Embracing Life, and Chapter 2, The Efficiency Trap, which concludes that you cannot create time for what matters by optimising everything else. The point that you will achieve relatively little is Chapter 13, Cosmic Insignificance Therapy. The phrasing above is a paraphrase, not a quotation.</span></li>
+  <li id="s19" value="19" style="display:flex;gap:1rem;border-top:1px solid #E3E6E8;border-bottom:1px solid #E3E6E8;padding:.8rem 0"><span style="flex:0 0 1.6rem;font-weight:600;color:#0F766E;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums">19</span><span style="min-width:0;overflow-wrap:anywhere"><strong>FAOSTAT REST API</strong>, checked 8, 10 and 11 September 2026 from two networks. <code>fenixservices.fao.org/faostat/api/v1/en/...</code> returns HTTP 521 at the Cloudflare edge, which is Cloudflare reporting that it could not open a connection to the origin rather than a block on the caller: <code>www.fao.org</code> returns 200 through the same edge, and a browser user agent makes no difference. <code>faostatservices.fao.org/api/v1/en/...</code> is served by CloudFront and returns 401 Missing Authorization Header. <a href="https://fenixservices.fao.org/faostat/api/v1/en/definitions/domain/QCL" target="_blank" rel="noopener">fenixservices.fao.org/faostat/api/v1/en/definitions/domain/QCL</a></span></li>
+</ol>
+</div>
+</section>
+
+</div>
+</article>
+</div>
+<script>
+/* Reference markers. Cards are built FROM the source list in the DOM, so nothing is
+   duplicated and restyling cannot leave a card stale. The only contract is that a
+   marker's href points at the id of its source entry. */
+(function () {
+  var root = document.getElementById('post'); if (!root) return;
+  var list = root.querySelector('#sources'); if (!list) return;
+
+  var card = document.createElement('div');
+  card.id = 'refcard';
+  card.style.cssText = 'position:absolute;z-index:60;width:min(27rem,calc(100vw - 1.6rem));' +
+    'background:#FFFFFF;border:1px solid #C4C9CC;border-top:2px solid #141618;' +
+    "padding:.75rem .9rem .85rem;font:13px/1.5 'Schibsted Grotesk',system-ui,sans-serif;color:#141618;" +
+    'box-shadow:0 8px 26px rgba(20,22,24,.12);opacity:0;transform:translateY(4px);' +
+    'transition:opacity .12s ease,transform .12s ease;pointer-events:none;';
+  document.body.appendChild(card);
+  var hideTimer = null;
+
+  function place(a) {
+    var li = document.getElementById(a.getAttribute('href').slice(1));
+    if (!li) return false;                       // nothing to show, stay silent
+    /* Each entry is two spans, a numeral in the gutter and the body. Reading the
+       whole li would print the number twice; fall back to it if the list is ever
+       restyled back to plain text. */
+    var inner = li.lastElementChild ? li.lastElementChild.innerHTML : li.innerHTML;
+    card.innerHTML =
+      '<div style="display:flex;align-items:center;gap:.55em;margin-bottom:.5rem">' +
+        '<span style="display:inline-block;min-width:1.7em;text-align:center;font-weight:600;' +
+        "font-size:11px;line-height:1.45;color:#141618;font-family:'JetBrains Mono',ui-monospace,monospace;" +
+        'outline:2px solid #0F766E;outline-offset:1px">' + (li.value || '') + '</span>' +
+        '<span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;' +
+        'color:#0F766E">Source</span>' +
+      '</div><div style="overflow-wrap:anywhere">' + inner + '</div>';
+    card.style.opacity = '1'; card.style.transform = 'none';
+    card.setAttribute('data-open', '');
+    var r = a.getBoundingClientRect();
+    var top = window.scrollY + r.bottom + 9, w = card.offsetWidth;
+    var left = Math.min(Math.max(8, window.scrollX + r.left + r.width / 2 - w / 2),
+      window.scrollX + document.documentElement.clientWidth - w - 8);
+    if (r.bottom + card.offsetHeight + 24 > window.innerHeight && r.top > card.offsetHeight) {
+      top = window.scrollY + r.top - card.offsetHeight - 9;
+    }
+    card.style.top = top + 'px'; card.style.left = left + 'px';
+    return true;
+  }
+  function hide() {
+    card.removeAttribute('data-open');
+    card.style.opacity = '0'; card.style.transform = 'translateY(4px)';
+  }
+
+  Array.prototype.forEach.call(root.querySelectorAll('a.ref'), function (a) {
+    a.style.textDecoration = 'none'; a.style.cursor = 'pointer';
+    a.addEventListener('mouseenter', function () {
+      if (a.firstElementChild) { a.firstElementChild.style.background = '#0F766E'; a.firstElementChild.style.color = '#FFFFFF'; }
+      clearTimeout(hideTimer); place(a);
+    });
+    a.addEventListener('mouseleave', function () {
+      if (a.firstElementChild) { a.firstElementChild.style.background = ''; a.firstElementChild.style.color = ''; }
+      hideTimer = setTimeout(hide, 120);
+    });
+    a.addEventListener('focus', function () { place(a); });
+    a.addEventListener('blur', hide);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+
+  /* The contents rail tracks the section you are in, the way the map story column
+     does. Section ids are assigned here from document order, so the generator emits
+     no slugs: the intro is sec-0 and the nine numbered sections are sec-1 to sec-9. */
+  var secs = Array.prototype.slice.call(root.querySelectorAll('article > div > section'));
+  secs.forEach(function (s, i) { s.id = 'sec-' + i; });
+  var links = Array.prototype.slice.call(root.querySelectorAll('[data-rail]'));
+  function mark(id) {
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.style.color = on ? '#141618' : '#6F767C';
+      a.style.fontWeight = on ? '600' : '400';
+      a.style.borderLeftColor = on ? '#0F766E' : 'transparent';
+    });
+  }
+  var seen = {};
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+    for (var i = 0; i < secs.length; i++) { if (seen[secs[i].id]) { mark(secs[i].id); break; } }
+  }, { rootMargin: '-10% 0px -70% 0px' });
+  secs.forEach(function (s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>

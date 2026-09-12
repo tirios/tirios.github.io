@@ -1,0 +1,11 @@
+:root{
+/* Paper does not float. Shadow is reserved for things that genuinely overlay. */
+--shadow-none:none;
+--shadow-raise:0 1px 0 rgba(20,22,24,0.06);
+--shadow-card:0 1px 2px rgba(20,22,24,0.05);
+--shadow-overlay:0 2px 4px rgba(20,22,24,0.06),0 16px 40px rgba(20,22,24,0.12);
+--shadow-popover:0 1px 2px rgba(20,22,24,0.08),0 6px 16px rgba(20,22,24,0.10);
+--shadow-well:inset 0 1px 0 rgba(20,22,24,0.06);
+--focus-ring:0 0 0 2px var(--tp-paper),0 0 0 4px var(--state-focus);
+--focus-ring-tight:0 0 0 2px var(--state-focus);
+}

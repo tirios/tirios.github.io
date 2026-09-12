@@ -1,0 +1,19 @@
+:root{
+--hairline:1px;
+--border-hair:1px solid var(--rule-hair);
+--border-mid:1px solid var(--rule-mid);
+--border-ink:1px solid var(--rule-ink);
+--border-accent:1px solid var(--rule-accent);
+--border-thick:2px solid var(--rule-ink);
+--border-rule-top:1px solid var(--rule-hair);
+
+--radius-none:0px;
+--radius-xs:2px;
+--radius-sm:4px;
+--radius-md:6px;
+--radius-lg:8px;
+--radius-pill:999px;
+--radius-control:var(--radius-sm);
+--radius-panel:var(--radius-none);
+--radius-figure:var(--radius-none);
+}

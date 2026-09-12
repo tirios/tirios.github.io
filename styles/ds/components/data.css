@@ -1,0 +1,45 @@
+.tp-stat{display:flex;flex-direction:column;gap:var(--space-3);min-width:0}
+.tp-stat__label{font:var(--type-label);text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--text-tertiary)}
+.tp-stat__value{font-family:var(--font-mono);font-size:var(--fs-xl);font-weight:var(--fw-medium);font-variant-numeric:tabular-nums;letter-spacing:var(--tracking-mono);line-height:1;color:var(--text-primary);display:flex;align-items:baseline;gap:var(--space-2)}
+.tp-stat__unit{font-size:var(--fs-sm);font-weight:var(--fw-regular);color:var(--text-tertiary)}
+.tp-stat__note{font-size:var(--fs-xs);line-height:var(--lh-label);color:var(--text-tertiary);font-family:var(--font-mono)}
+.tp-stat--lg .tp-stat__value{font-size:var(--fs-2xl)}
+.tp-stat--sm .tp-stat__value{font-size:var(--fs-lg)}
+.tp-stat--accent .tp-stat__value{color:var(--text-accent)}
+.tp-stat--bordered{border-top:1px solid var(--rule-ink);padding-top:var(--space-4)}
+.tp-statgroup{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--space-7)}
+
+.tp-table{width:100%;font-size:var(--fs-md);border-collapse:collapse}
+.tp-table th{text-align:left;font:var(--type-label);text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--text-tertiary);font-weight:var(--fw-semibold);padding:0 var(--space-5) var(--space-3) 0;border-bottom:1px solid var(--rule-ink);white-space:nowrap}
+.tp-table td{padding:var(--space-4) var(--space-5) var(--space-4) 0;border-bottom:1px solid var(--rule-hair);color:var(--text-primary);vertical-align:top;line-height:var(--lh-body)}
+.tp-table th:last-child,.tp-table td:last-child{padding-right:0}
+.tp-table__num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:var(--tracking-mono);text-align:right}
+th.tp-table__num{text-align:right}
+.tp-table__muted{color:var(--text-tertiary)}
+.tp-table--compact td{padding-top:var(--space-3);padding-bottom:var(--space-3)}
+.tp-table--hover tbody tr{transition:background var(--dur-fast) var(--ease-standard)}
+.tp-table--hover tbody tr:hover{background:var(--surface-sunken)}
+.tp-table tbody tr[aria-selected=true]{background:var(--surface-accent-wash)}
+.tp-table__caption{margin-top:var(--space-4);font-size:var(--fs-xs);color:var(--text-tertiary);font-family:var(--font-mono);line-height:var(--lh-body)}
+
+.tp-modeltable__bar{position:relative;height:6px;background:var(--tp-ink-100);min-width:60px}
+.tp-modeltable__fill{position:absolute;inset:0 auto 0 0;background:var(--tp-data-1);transition:width var(--dur-plot) var(--ease-standard)}
+.tp-modeltable__best{font-family:var(--font-mono);font-size:var(--fs-2xs);letter-spacing:var(--tracking-micro);text-transform:uppercase;color:var(--tp-teal-800)}
+
+.tp-plot{display:flex;flex-direction:column;gap:var(--space-3);width:100%;font-family:var(--font-mono)}
+.tp-plot svg{display:block;width:100%;height:auto;overflow:visible}
+.tp-plot__axis line,.tp-plot__axis path{stroke:var(--plot-axis);stroke-width:1;shape-rendering:crispEdges}
+.tp-plot__grid line{stroke:var(--plot-grid);stroke-width:1;shape-rendering:crispEdges}
+.tp-plot__tick{font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;fill:var(--plot-label)}
+.tp-plot__axislabel{font-family:var(--font-mono);font-size:9px;letter-spacing:var(--tracking-micro);text-transform:uppercase;fill:var(--plot-label)}
+.tp-plot__ref{stroke:var(--plot-reference);stroke-width:1;stroke-dasharray:2 3;shape-rendering:crispEdges}
+.tp-plot__series{fill:none;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.tp-plot__point{stroke:var(--surface-plot);stroke-width:1}
+.tp-plot__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-5)}
+.tp-plot__title{font-family:var(--font-sans);font-size:var(--fs-md);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-tight);color:var(--text-primary)}
+.tp-plot__note{margin-left:auto;white-space:nowrap;font-size:var(--fs-2xs);letter-spacing:var(--tracking-micro);text-transform:uppercase;color:var(--text-tertiary)}
+.tp-plot__legend{display:flex;flex-wrap:wrap;gap:var(--space-5);font-size:var(--fs-2xs);letter-spacing:var(--tracking-micro);text-transform:uppercase;color:var(--text-secondary)}
+.tp-plot__legend span{display:inline-flex;align-items:center;gap:var(--space-3)}
+.tp-plot__swatch{width:10px;height:3px;flex:none}
+.tp-plot__rowlabel{font-family:var(--font-mono);font-size:10px;fill:var(--text-primary)}
+.tp-plot__rowmeta{font-family:var(--font-mono);font-size:9px;fill:var(--text-tertiary)}

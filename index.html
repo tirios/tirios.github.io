@@ -5,457 +5,269 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sotirios Pestrivas</title>
 <meta name="description" content="R&amp;D engineer and data scientist. PhD candidate in the applications of data science, statistical modelling and AI, Queensland University of Technology.">
-<meta name="theme-color" content="#f5f2ea">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sotirios Pestrivas">
 <meta property="og:description" content="R&amp;D engineer and data scientist. PhD candidate in the applications of data science, statistical modelling and AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<style>
-:root {
-  --color-bg: #f5f2ea;
-  --color-surface: #fcfaf5;
-  --color-text: #1c1a15;
-  --color-divider: rgba(28, 26, 21, 0.20);
-  --color-accent: #8a6114;
-  --color-accent-100: #6b4a0f;
-  --color-accent-300: #6b4a0f;
-  --color-accent-700: #cdb083;
-  --font-heading: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --radius-md: 8px;
-  --shadow-sm: 0 0 0 1px rgba(28, 26, 21, 0.14);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; }
-img { display: block; max-width: 100%; }
-a { color: var(--color-accent-300); text-underline-offset: 3px; }
-a:hover { color: var(--color-accent); }
-:focus { outline: none; }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  cursor: pointer; text-decoration: none;
-  font-family: var(--font-heading); font-weight: 500;
-  font-size: 14px; line-height: 1.2; color: var(--color-text);
-  background: transparent; border: 1px solid transparent;
-  padding: 5.6px 10.08px; border-radius: var(--radius-md);
-  transition: background 0.18s ease;
-}
-.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
-.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
-.btn-primary:active { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
-.btn-secondary { border-color: var(--color-divider); }
-.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
-.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
-
-/* — hero — */
-.progress {
-  position: fixed; top: 0; left: 0; z-index: 130;
-  height: 2px; width: 100%;
-  transform: scaleX(0); transform-origin: left;
-  background: linear-gradient(to right, var(--color-accent-700), var(--color-accent));
-}
-.hero {
-  position: relative; min-height: 100vh; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.hero-wash {
-  position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to right,
-    var(--color-bg) 0%, var(--color-bg) 26%,
-    color-mix(in srgb, var(--color-bg) 86%, transparent) 40%,
-    color-mix(in srgb, var(--color-bg) 34%, transparent) 58%,
-    transparent 74%);
-}
-.hero-body {
-  position: relative; pointer-events: none;
-  display: flex; flex-direction: column; gap: 24px;
-  padding: 0 clamp(24px, 6vw, 90px);
-}
-.affiliation { display: flex; align-items: center; gap: 10px; }
-.affiliation span:first-child { width: 26px; height: 1px; background: var(--color-accent); }
-.affiliation span:last-child {
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--color-accent-300);
-}
-.hero h1 {
-  margin: 0; font-size: clamp(48px, 7.6vw, 112px);
-  line-height: 0.94; letter-spacing: -0.042em;
-}
-.hero-lede {
-  margin: 0; max-width: 36ch;
-  font-size: clamp(16px, 1.6vw, 20px); line-height: 1.5;
-  color: color-mix(in srgb, var(--color-text) 76%, transparent);
-}
-.hero-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; pointer-events: auto; }
-
-/* — body — */
-main {
-  max-width: 940px; margin: 0 auto;
-  padding: clamp(72px, 11vw, 140px) clamp(24px, 5vw, 56px) clamp(64px, 9vw, 120px);
-  display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px);
-}
-.summary {
-  margin: 0; max-width: 62ch;
-  font-size: clamp(18px, 1.9vw, 23px); line-height: 1.55; letter-spacing: -0.012em;
-  color: color-mix(in srgb, var(--color-text) 90%, transparent);
-  text-wrap: pretty;
-}
-.section-head {
-  display: flex; align-items: baseline; gap: 16px;
-  padding-bottom: 14px; margin-bottom: 32px;
-  background: linear-gradient(to right,
-    var(--color-divider), var(--color-divider) calc(100% - 48px), transparent)
-    no-repeat bottom / 100% 1px;
-}
-.section-head h2 {
-  margin: 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 62%, transparent);
-}
-.section-count {
-  margin-left: auto; font-size: 11px; letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-  color: color-mix(in srgb, var(--color-text) 60%, transparent);
-}
-.paper { margin-bottom: 40px; }
-.paper h3 {
-  margin: 0 0 14px; font-size: clamp(21px, 2.3vw, 30px);
-  line-height: 1.22; letter-spacing: -0.024em; text-wrap: pretty;
-}
-.paper h3 a {
-  color: var(--color-text); text-decoration: none; padding-bottom: 3px;
-  background: linear-gradient(to right, var(--color-accent), var(--color-accent))
-    no-repeat left bottom / 0% 1px;
-  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.paper h3 a:hover { background-size: 100% 1px; }
-.meta-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px 28px; max-width: 640px;
-}
-.meta-grid > div {
-  padding-top: 10px;
-  background: linear-gradient(to right,
-    color-mix(in srgb, var(--color-text) 14%, transparent), transparent)
-    no-repeat top / 100% 1px;
-}
-.label {
-  margin: 0 0 3px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 64%, transparent);
-}
-.meta-grid p:last-child {
-  margin: 0; font-size: 13.5px;
-  color: color-mix(in srgb, var(--color-text) 82%, transparent);
-}
-.pending { margin-bottom: 40px; }
-.pending h3 { margin: 0 0 16px; font-size: clamp(18px, 1.9vw, 23px); letter-spacing: -0.018em; }
-.pending-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.pending-grid p {
-  margin: 0; padding: 14px 16px;
-  border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-sm);
-  font-size: 13.5px; line-height: 1.6;
-  color: color-mix(in srgb, var(--color-text) 78%, transparent);
-}
-.talks { display: flex; flex-direction: column; }
-.talks > div {
-  display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 11px 0;
-  background: linear-gradient(to right,
-    color-mix(in srgb, var(--color-text) 12%, transparent), transparent)
-    no-repeat top / 100% 1px;
-}
-.talks > div:last-child {
-  background:
-    linear-gradient(to right, color-mix(in srgb, var(--color-text) 12%, transparent), transparent) no-repeat top / 100% 1px,
-    linear-gradient(to right, color-mix(in srgb, var(--color-text) 12%, transparent), transparent) no-repeat bottom / 100% 1px;
-}
-.talks span:first-child { font-size: 14.5px; }
-.talks .where { font-size: 13px; color: color-mix(in srgb, var(--color-text) 68%, transparent); }
-
-.before {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(24px, 4vw, 48px); align-items: center;
-}
-.portrait {
-  margin: 0; aspect-ratio: 5 / 4; overflow: hidden;
-  border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
-  mix-blend-mode: multiply; background-color: transparent;
-}
-.portrait img { width: 100%; height: 100%; object-fit: cover; }
-.before p { margin: 0; font-size: 15px; line-height: 1.7; color: color-mix(in srgb, var(--color-text) 78%, transparent); text-wrap: pretty; }
-
-.contact-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.updated {
-  margin-left: auto; font-size: 10.5px; letter-spacing: 0.08em;
-  color: color-mix(in srgb, var(--color-text) 60%, transparent);
-}
-
-@media (max-width: 720px) {
-  /* Percentage ramps tuned for wide viewports leave the text on bare field here.
-     Give the flow the top of the screen and put solid paper under the words. */
-  .hero { justify-content: flex-end; padding-bottom: clamp(40px, 10vh, 88px); }
-  .hero-wash {
-    background: linear-gradient(to bottom,
-      transparent 0%,
-      color-mix(in srgb, var(--color-bg) 24%, transparent) 20%,
-      color-mix(in srgb, var(--color-bg) 86%, transparent) 34%,
-      var(--color-bg) 46%);
-  }
-}
-
-@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-.hero .affiliation { animation: rise 0.7s 0.1s ease-out both; }
-.hero h1 { animation: rise 0.9s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.hero-lede { animation: rise 0.9s 0.3s ease-out both; }
-.hero-actions { animation: rise 0.9s 0.42s ease-out both; }
-[data-reveal] {
-  opacity: 0; transform: translateY(18px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal].in { opacity: 1; transform: none; }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation: none !important; transition: none !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-</style>
+<link rel="stylesheet" href="styles/ds/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="styles/site.css">
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
+<div class="site">
 
-<header class="hero">
-  <canvas id="flow" aria-hidden="true"></canvas>
-  <div class="hero-wash" aria-hidden="true"></div>
-  <div class="hero-body">
-    <p class="affiliation"><span></span><span>Queensland University of Technology</span></p>
-    <h1>Sotirios<br>Pestrivas</h1>
-    <p class="hero-lede">R&amp;D engineer and data scientist. PhD candidate in the applications of data science, statistical modelling and AI.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:contact@tiri.me">contact@tiri.me</a>
-      <a class="btn btn-secondary" href="#research">Research</a>
+  <header class="site-header">
+    <div class="tp-page site-header__inner">
+      <a class="wordmark" href="#top">
+        <span class="wordmark__name">Sotirios Pestrivas</span>
+        <span class="tp-micro wordmark__strapline">r&amp;d engineering &middot; data science</span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#before">Pre-PhD</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
+
+  <div class="masthead">
+    <canvas class="masthead__field" aria-hidden="true"></canvas>
+    <section id="top" class="tp-page masthead__inner" aria-labelledby="masthead-name">
+      <div class="tp-eyebrow">
+        <span>Queensland University of Technology</span>
+        <span class="tp-eyebrow__line"></span>
+      </div>
+      <h1 class="masthead__name" id="masthead-name">Sotirios Pestrivas</h1>
+      <p class="tp-lead masthead__lede">R&amp;D engineer and data scientist. PhD candidate in the applications of data science, statistical modelling and AI.</p>
+      <div class="masthead__actions">
+        <a class="tp-btn tp-btn--primary" href="mailto:contact@tiri.me"><i class="ph ph-envelope-simple btn-icon" aria-hidden="true"></i>contact@tiri.me</a>
+      </div>
+      <div class="masthead__program">
+        <span class="tp-label">Program</span>
+        <span class="masthead__program-value">CSIRO Next Generation Graduate Program</span>
+      </div>
+    </section>
   </div>
-</header>
 
-<main>
-
-  <p class="summary" data-reveal>Mechanical engineer and applied mathematician by training, with ten years in R&amp;D and process development before I moved into data science. Currently a PhD candidate in an industry-linked program (CSIRO Next Generation Graduate Program) embedded at the Australian Centre for Sports Aerodynamics wind tunnel, operated by the South Australian Sports Institute.</p>
-
-  <section id="research" style="scroll-margin-top:60px">
-    <div class="section-head">
-      <h2>Research</h2>
-      <span class="section-count">01 / 03</span>
+  <section id="projects" class="tp-page section section--projects" aria-labelledby="eyebrow-projects">
+    <div class="tp-eyebrow">
+      <span class="tp-eyebrow__index">01</span>
+      <span id="eyebrow-projects">Projects</span>
+      <span class="tp-eyebrow__line"></span>
     </div>
 
-    <article class="paper" data-reveal>
-      <h3><a href="https://doi.org/10.2139/ssrn.7145939">Phase-resolved drag area of a pedalling cyclist from wind tunnel force balance data using a Bayesian decomposition</a></h3>
-      <div class="meta-grid">
-        <div>
-          <p class="label">Status</p>
-          <p>Preprint on SSRN</p>
+    <article class="project">
+      <div class="project__well">
+        <img src="livestock/map-card.png" alt="World map of chicken head counts in 2022, each country coloured by whether its figure is an official national count, a country estimate or an FAO imputation.">
+      </div>
+      <div>
+        <div class="project__meta">
+          <span class="tp-num project__index">01</span>
+          <span class="tp-badge tp-badge--neutral"><span class="tp-badge__dot"></span>In development</span>
         </div>
-        <div>
-          <p class="label">Submitted to</p>
-          <p>Journal of Wind Engineering and Industrial Aerodynamics</p>
+        <h2 class="project__title">Visualising FAOSTAT data</h2>
+        <div class="project__tags">
+          <span class="tp-tag">Visualisation</span>
+          <span class="tp-tag">FAOSTAT</span>
+        </div>
+        <div class="linkrows">
+          <a class="linkrow" href="livestock/post.html">
+            <span class="linkrow__label">Read the write-up</span>
+            <span class="tp-micro">Blog post</span>
+          </a>
+          <a class="linkrow" href="livestock/index.html">
+            <span class="linkrow__label">Open the map</span>
+            <span class="tp-micro">Interactive</span>
+          </a>
         </div>
       </div>
     </article>
-
-    <article class="pending" data-reveal>
-      <h3>Two further papers in preparation.</h3>
-      <div class="pending-grid">
-        <p>A methods paper in Bayesian statistics. With supervisors, submitting shortly.</p>
-        <p>An applied study combining computer vision and statistical modelling. In preparation.</p>
-      </div>
-    </article>
-
-    <article data-reveal>
-      <p class="label">Presented at</p>
-      <div class="talks">
-        <div><span>ISBA World Meeting 2026</span><span class="where">Nagoya</span></div>
-        <div><span>Bayesian Young Statisticians Meeting 2026</span><span class="where">Chiba</span></div>
-        <div><span>Bayes on the Beach 2026</span><span class="where">Wollongong</span></div>
-        <div><span>CSIRO Next Generation Graduate Program mid-year event</span></div>
-      </div>
-    </article>
   </section>
 
-  <section class="before" data-reveal>
-    <!-- Add portrait.jpg beside index.html, then uncomment these three lines.
-    <figure class="portrait" id="portrait">
-      <img src="portrait.jpg" alt="Sotirios Pestrivas" onerror="document.getElementById('portrait').remove()">
-    </figure>
-    -->
-    <div>
-      <div class="section-head">
-        <h2>Before the PhD</h2>
-        <span class="section-count">02 / 03</span>
+  <section id="research" class="tp-page section" aria-labelledby="eyebrow-research">
+    <div class="tp-eyebrow">
+      <span class="tp-eyebrow__index">02</span>
+      <span id="eyebrow-research">Research</span>
+      <span class="tp-eyebrow__line"></span>
+    </div>
+
+    <div class="research">
+      <a class="research__row" href="https://doi.org/10.2139/ssrn.7145939">
+        <span class="tp-num research__index">01</span>
+        <span class="research__body">
+          <span class="research__title">Phase-resolved drag area of a pedalling cyclist from wind tunnel force balance data using a Bayesian decomposition</span>
+          <span class="tp-num research__meta research__meta--mono">SSRN &middot; 10.2139/ssrn.7145939</span>
+        </span>
+        <span class="research__badge">
+          <span class="tp-badge tp-badge--positive"><span class="tp-badge__dot"></span>Pre-print</span>
+        </span>
+      </a>
+
+      <div class="research__row">
+        <span class="tp-num research__index">02</span>
+        <span class="research__body">
+          <span class="research__title">From test means to decisions, probabilistic equipment ranking in cycling</span>
+          <span class="research__meta research__meta--note">With supervisors, submitting shortly.</span>
+        </span>
+        <span class="research__badge">
+          <span class="tp-badge tp-badge--neutral"><span class="tp-badge__dot"></span>Finalising submission</span>
+        </span>
       </div>
-      <p>Ten years in R&amp;D and process development. Bespoke pilot-scale equipment for a net-zero magnesium technology and for a lignite-drying process, from mechanical design through fabrication and commissioning, alongside CFD and process documentation. Earlier work covered hands-on R&amp;D commercialising a CSIRO titanium process, and CAD and CNC workflows for a boutique guitar manufacturer.</p>
+
+      <div class="research__row">
+        <span class="tp-num research__index">03</span>
+        <span class="research__body">
+          <span class="research__title">An applied study combining computer vision and statistical modelling</span>
+        </span>
+        <span class="research__badge">
+          <span class="tp-badge tp-badge--neutral"><span class="tp-badge__dot"></span>In preparation</span>
+        </span>
+      </div>
     </div>
   </section>
 
-  <section data-reveal>
-    <div class="section-head">
-      <h2>Contact</h2>
-      <span class="section-count">03 / 03</span>
+  <section id="before" class="tp-page section" aria-labelledby="eyebrow-before">
+    <div class="tp-eyebrow">
+      <span class="tp-eyebrow__index">03</span>
+      <span id="eyebrow-before">Pre-PhD</span>
+      <span class="tp-eyebrow__line"></span>
     </div>
-    <div class="contact-row">
-      <a class="btn btn-primary" href="mailto:contact@tiri.me">contact@tiri.me</a>
-      <a class="btn btn-secondary" href="https://www.linkedin.com/in/sotiriospestrivas/">LinkedIn</a>
-      <a class="btn btn-secondary" href="https://github.com/tirios">GitHub</a>
-      <span class="updated">Updated August 2026</span>
+    <div class="before__body">
+      <p class="before__text">Ten years in R&amp;D and process development. Bespoke pilot-scale equipment for a net-zero magnesium technology and for a lignite-drying process, from mechanical design through fabrication and commissioning, alongside CFD and process documentation. Earlier work covered hands-on R&amp;D commercialising a CSIRO titanium process, and CAD and CNC workflows for a boutique guitar manufacturer.</p>
     </div>
   </section>
 
-</main>
+  <section id="talks" class="tp-page section" aria-labelledby="eyebrow-talks">
+    <div class="tp-eyebrow">
+      <span class="tp-eyebrow__index">04</span>
+      <span id="eyebrow-talks">Presented at</span>
+      <span class="tp-eyebrow__line"></span>
+    </div>
+    <div class="talks">
+      <div class="talks__row">
+        <span class="talks__event">ISBA World Meeting 2026</span>
+        <span class="tp-micro">Nagoya</span>
+      </div>
+      <div class="talks__row">
+        <span class="talks__event">Bayesian Young Statisticians Meeting 2026</span>
+        <span class="tp-micro">Chiba</span>
+      </div>
+      <div class="talks__row">
+        <span class="talks__event">Bayes on the Beach 2026</span>
+        <span class="tp-micro">Wollongong</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="tp-page section" aria-labelledby="eyebrow-contact">
+    <div class="tp-eyebrow">
+      <span class="tp-eyebrow__index">05</span>
+      <span id="eyebrow-contact">Contact</span>
+      <span class="tp-eyebrow__line"></span>
+    </div>
+    <div class="contact__actions">
+      <a class="tp-btn tp-btn--secondary" href="mailto:contact@tiri.me"><i class="ph ph-envelope-simple btn-icon" aria-hidden="true"></i>contact@tiri.me</a>
+      <a class="tp-btn tp-btn--quiet" href="https://www.linkedin.com/in/sotiriospestrivas/">LinkedIn<i class="ph ph-arrow-up-right btn-icon" aria-hidden="true"></i></a>
+      <a class="tp-btn tp-btn--quiet" href="https://github.com/tirios">GitHub<i class="ph ph-arrow-up-right btn-icon" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="tp-page site-footer__inner">
+      <span class="site-footer__name">Sotirios Pestrivas</span>
+      <span class="tp-micro">Updated September 2026</span>
+    </div>
+  </footer>
+
+</div>
 
 <script>
-/* Scroll progress + section reveals */
+/* Masthead background: faint graphite motes on a slowly turning heading.
+   Decorative and aria-hidden. Under prefers-reduced-motion the field is
+   painted once and never animated. */
 (function () {
-  var bar = document.getElementById('progress');
-  function onScroll() {
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  var targets = document.querySelectorAll('[data-reveal]');
-  if (!('IntersectionObserver' in window)) {
-    targets.forEach(function (n) { n.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { rootMargin: '0px 0px -10% 0px' });
-  targets.forEach(function (n) { io.observe(n); });
-})();
-
-/* Hero flow field: a uniform stream with a slow, gentle vertical drift.
-   No obstacle and no pointer interaction; the field simply flows. */
-(function () {
-  var cv = document.getElementById('flow');
+  var cv = document.querySelector('.masthead__field');
   if (!cv || !cv.getContext) return;
   var ctx = cv.getContext('2d');
-  var css = getComputedStyle(document.body);
-  var INK = (css.getPropertyValue('--color-accent-100') || '#6b4a0f').trim();
-  var PAPER = (css.getPropertyValue('--color-bg') || '#f5f2ea').trim();
+  if (!ctx) return;
 
-  var COUNT = 560;        // streamlines
-  var LEN = 110;          // points held per streamline
-  var SPD = 2.0;          // integration step
-  var WARMUP = 150;       // frames integrated before the first paint
-  var ALPHAS = [0.24, 0.60, 0.85];
-  var LINE_WIDTH = 1.4;
-  var SWAY = 0.16;        // vertical drift, as a fraction of the stream speed
+  var INK = '20,22,24', PAPER = '#FFFFFF';
+  var DENSITY = 1 / 11000, MIN = 24, MAX = 150, EDGE = 24;
+  var W = 0, H = 0, dots = [], raf = null;
 
-  var W = 0, H = 0, dpr = 1, t = 0;
-  var lines = [];
-  var raf = null, timer = null, frames = 0;
-
-  /* Rightward stream plus three long-wavelength vertical modes at different
-     rates, so the pattern never visibly repeats. The summed amplitude is held
-     well under 1, which keeps the flow undulating rather than folding back. */
-  function vel(x, y) {
-    var v = Math.sin(x * 0.0026 + y * 0.0014 + t * 0.42)
-          + 0.55 * Math.sin(x * 0.0011 - y * 0.0032 + t * 0.23)
-          + 0.30 * Math.sin(y * 0.0068 - t * 0.15);
-    return { u: 1, v: SWAY * v };
-  }
-
-  function seed(L) {
-    L.x = -Math.random() * 90;
-    L.y = Math.random() * H;
-    L.sp = 0.85 + Math.random() * 0.3;  // slight spread so lines do not march in step
-    L.pts.length = 0;
+  function make() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      a: 0.06 + Math.random() * 0.16,
+      r: 0.9 + Math.random() * 1.1,
+      sp: 0.06 + Math.random() * 0.16,
+      ang: Math.random() * Math.PI * 2,
+      turn: (Math.random() - 0.5) * 0.004
+    };
   }
 
   function step() {
-    t += 0.016;
-    ctx.fillStyle = PAPER; ctx.globalAlpha = 1;
+    ctx.fillStyle = PAPER;
     ctx.fillRect(0, 0, W, H);
-    ctx.lineCap = 'round';
-    ctx.lineWidth = LINE_WIDTH;
-    ctx.strokeStyle = INK;
-    for (var j = 0; j < lines.length; j++) {
-      var L = lines[j];
-      if (L.x > W + 10 || L.y < -10 || L.y > H + 10) { seed(L); continue; }
-      var q = vel(L.x, L.y);
-      L.pts.push(L.x, L.y);
-      if (L.pts.length > LEN * 2) L.pts.splice(0, 2);
-      L.x += q.u * SPD * L.sp; L.y += q.v * SPD * L.sp;
-      var n = L.pts.length / 2;
-      if (n < 3) continue;
-      var seg = Math.ceil(n / 3);
-      for (var s = 0; s < 3; s++) {
-        var a = s * seg, b = Math.min(n - 1, (s + 1) * seg);
-        if (b - a < 1) continue;
-        ctx.globalAlpha = ALPHAS[s];
-        ctx.beginPath();
-        ctx.moveTo(L.pts[a * 2], L.pts[a * 2 + 1]);
-        for (var i = a + 1; i <= b; i++) ctx.lineTo(L.pts[i * 2], L.pts[i * 2 + 1]);
-        ctx.stroke();
-      }
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      d.turn += (Math.random() - 0.5) * 0.0016;
+      if (d.turn > 0.012) d.turn = 0.012;
+      if (d.turn < -0.012) d.turn = -0.012;
+      d.ang += d.turn;
+      d.x += Math.cos(d.ang) * d.sp;
+      d.y += Math.sin(d.ang) * d.sp;
+      if (d.x < -EDGE) d.x = W + EDGE;
+      if (d.x > W + EDGE) d.x = -EDGE;
+      if (d.y < -EDGE) d.y = H + EDGE;
+      if (d.y > H + EDGE) d.y = -EDGE;
+      ctx.globalAlpha = d.a;
+      ctx.fillStyle = 'rgb(' + INK + ')';
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
     }
     ctx.globalAlpha = 1;
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h || (w === W && h === H)) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = w; H = h;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    lines.length = 0;
-    for (var i = 0; i < COUNT; i++) {
-      var L = { x: 0, y: 0, sp: 1, pts: [] };
-      seed(L);
-      L.x = Math.random() * W;  // first fill spreads across the canvas, not just the inlet
-      lines.push(L);
+    var n = Math.max(MIN, Math.min(MAX, Math.round(W * H * DENSITY)));
+    dots = [];
+    for (var i = 0; i < n; i++) dots.push(make());
+    step();
+  }
+
+  function tick() { step(); raf = requestAnimationFrame(tick); }
+
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+  /* Reduced motion leaves whatever frame resize() already painted standing. */
+  function sync() {
+    if (mq && mq.matches) {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    } else if (!raf) {
+      raf = requestAnimationFrame(tick);
     }
-    for (var f = 0; f < WARMUP; f++) step();
   }
 
   resize();
-  window.addEventListener('resize', resize);
-
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  function tick() { frames++; step(); if (!timer) raf = requestAnimationFrame(tick); }
-  raf = requestAnimationFrame(tick);
-
-  /* Some browsers pause rAF in backgrounded views; fall back to a timer. */
-  var last = -1;
-  var watchdog = setInterval(function () {
-    if (frames > 0 && frames !== last) { clearInterval(watchdog); return; }
-    if (frames === last && !document.hidden) {
-      cancelAnimationFrame(raf);
-      timer = setInterval(function () { frames++; step(); }, 34);
-      clearInterval(watchdog);
-      return;
-    }
-    last = frames;
-  }, 450);
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(cv);
+  if (mq && mq.addEventListener) mq.addEventListener('change', sync);
+  sync();
 })();
 </script>
+
 </body>
 </html>

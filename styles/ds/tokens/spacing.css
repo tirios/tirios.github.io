@@ -1,0 +1,44 @@
+:root{
+/* ---- 4px grid. Softer than a hardware grid; still exact. ---- */
+--space-0:0px;
+--space-px:1px;
+--space-1:2px;
+--space-2:4px;
+--space-3:8px;
+--space-4:12px;
+--space-5:16px;
+--space-6:20px;
+--space-7:24px;
+--space-8:32px;
+--space-9:40px;
+--space-10:56px;
+--space-11:72px;
+--space-12:96px;
+--space-13:128px;
+--space-14:176px;
+
+/* ---- layout ---- */
+--gutter:24px;
+--gutter-wide:40px;
+--pad-panel:20px;
+--pad-panel-lg:28px;
+--pad-control-y:8px;
+--pad-control-x:14px;
+--inset-page:40px;
+
+/* ---- fixed sizes ---- */
+--size-control-sm:28px;
+--size-control:36px;
+--size-control-lg:44px;
+--size-header:64px;
+--size-dot:8px;
+--size-rail:220px;
+--size-toc:180px;
+
+/* ---- measures ---- */
+--measure-prose:66ch;
+--measure-narrow:48ch;
+--measure-wide:82ch;
+--max-page:1180px;
+--max-text-page:820px;
+}

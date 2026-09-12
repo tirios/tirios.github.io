@@ -1,0 +1,302 @@
+/* Page composition for tirios.github.io.
+   Everything visual comes from the design system in ds/ — tokens, components,
+   base resets. This file holds only the page-level layout that sits on top of
+   it. Load order matters: ds/styles.css first, then this. */
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.site {
+  background: var(--surface-page);
+  min-height: 100vh;
+}
+
+/* Anchored regions clear the sticky header when a nav link is followed. */
+.section {
+  scroll-margin-top: 80px;
+  padding-top: clamp(56px, 7vw, 96px);
+}
+.section--projects { padding-top: clamp(48px, 6vw, 80px); }
+
+/* The nav wraps rather than collapsing to a menu, so the sticky header grows in
+   steps as the viewport narrows: 65px at 730px and wider, 92px from 420px, 115px
+   from 370px, 160px below that (measured against this nav's four items). The
+   handoff's flat 80px scroll margin only clears the widest of those, so the
+   narrow bands get their own. Re-measure these if a nav item is added. */
+@media (max-width: 419px) {
+  .section,
+  .masthead__inner { scroll-margin-top: 120px; }
+}
+@media (max-width: 369px) {
+  .section,
+  .masthead__inner { scroll-margin-top: 164px; }
+}
+
+/* ---------------------------------------------------------------- header -- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--surface-page);
+  border-bottom: 1px solid var(--rule-hair);
+}
+.site-header__inner {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.wordmark { display: flex; align-items: baseline; gap: 10px; }
+a.wordmark:link,
+a.wordmark:visited,
+a.wordmark:hover,
+a.wordmark:active {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.wordmark__name { font-size: 16px; font-weight: 600; letter-spacing: -0.03em; }
+.wordmark__strapline { font-size: 9px; }
+
+.site-nav { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.site-nav a:link,
+.site-nav a:visited {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.site-nav a:hover,
+.site-nav a:active { color: var(--text-primary); }
+
+/* -------------------------------------------------------------- masthead -- */
+
+.masthead { position: relative; overflow: hidden; }
+
+/* Decorative particle drift. Sits behind the masthead only; the section below
+   is positioned, so it paints over the canvas without needing a z-index. */
+.masthead__field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.masthead__inner {
+  position: relative;
+  padding-top: clamp(52px, 7vw, 96px);
+  padding-bottom: clamp(52px, 7vw, 96px);
+  scroll-margin-top: 80px;
+}
+.masthead__name {
+  font-size: clamp(42px, 8.4vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  text-wrap: balance;
+}
+.masthead__lede {
+  font-size: clamp(18px, 2.3vw, 23px);
+  color: var(--text-primary);
+  max-width: 34ch;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.masthead__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.masthead__program {
+  display: flex;
+  gap: 10px 16px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-top: clamp(28px, 4vw, 40px);
+  border-top: 1px solid var(--rule-hair);
+  padding-top: 14px;
+  max-width: 540px;
+}
+.masthead__program-value { font-size: 14px; color: var(--text-primary); text-wrap: pretty; }
+
+/* -------------------------------------------------------------- projects -- */
+
+.project {
+  margin-top: clamp(20px, 2.5vw, 28px);
+  border-top: 1px solid var(--rule-ink);
+  padding-top: clamp(20px, 2.5vw, 28px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+.project__well {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--rule-hair);
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+.project__well img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project__meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.project__index { font-size: 11px; color: var(--text-tertiary); }
+.project__title {
+  font-size: clamp(21px, 2.6vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.024em;
+  margin-top: 14px;
+  text-wrap: pretty;
+}
+.project__tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+
+.linkrows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  border-top: 1px solid var(--rule-hair);
+}
+a.linkrow:link,
+a.linkrow:visited {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-hair);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+a.linkrow:hover,
+a.linkrow:active { color: var(--text-link); }
+.linkrow__label { font-size: 15px; }
+
+/* -------------------------------------------------------------- research -- */
+
+.research { margin-top: clamp(20px, 2.5vw, 28px); border-top: 1px solid var(--rule-ink); }
+.research__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule-hair);
+}
+a.research__row:link,
+a.research__row:visited { text-decoration: none; color: var(--text-primary); }
+a.research__row:hover,
+a.research__row:active { color: var(--text-link); }
+
+.research__index { flex: 0 0 44px; font-size: 11px; color: var(--text-tertiary); padding-top: 5px; }
+.research__body { flex: 1 1 260px; min-width: 0; }
+.research__title {
+  display: block;
+  font-size: clamp(17px, 1.9vw, 20px);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.research__meta { display: block; margin-top: 8px; }
+.research__meta--mono { font-size: 11px; color: var(--text-tertiary); }
+.research__meta--note { font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; }
+.research__badge {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+/* --------------------------------------------------------------- pre-phd -- */
+
+.before__body { margin-top: clamp(24px, 3vw, 36px); }
+.before__text {
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--text-primary);
+  max-width: 66ch;
+  text-wrap: pretty;
+  border-top: 1px solid var(--rule-ink);
+  padding-top: 20px;
+}
+
+/* ----------------------------------------------------------------- talks -- */
+
+.talks {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin-top: clamp(18px, 2.5vw, 24px);
+  border-top: 1px solid var(--rule-ink);
+}
+.talks__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 20px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-hair);
+}
+.talks__event { font-size: 14.5px; color: var(--text-primary); text-wrap: pretty; }
+
+/* --------------------------------------------------------------- contact -- */
+
+.contact__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid var(--rule-ink);
+  padding-top: 24px;
+}
+
+/* ---------------------------------------------------------------- footer -- */
+
+.site-footer { margin-top: clamp(56px, 7vw, 96px); border-top: 1px solid var(--rule-ink); }
+.site-footer__inner {
+  padding-top: 24px;
+  padding-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.site-footer__name { font-size: 15px; font-weight: 600; letter-spacing: -0.03em; }
+
+/* ----------------------------------------------------------- button icon -- */
+
+/* Phosphor glyph inside a control, matching the design system's Button: 16px,
+   inheriting currentColor. */
+.btn-icon { font-size: 16px; line-height: 1; display: inline-flex; }
+
+/* The design system draws buttons as .tp-btn on an <a>, but tokens/base.css
+   styles every <a> at :hover, :active and :focus-visible with a higher
+   specificity than the .tp-btn--* variants carry. Left alone, the primary
+   button's white label turns teal on a teal ground when hovered, and every
+   button's corner radius drops from 4px to 2px while focused. Restore the
+   variant's own colour and radius for the anchor case. */
+a.tp-btn--primary:hover,
+a.tp-btn--primary:active { color: var(--text-on-accent); }
+a.tp-btn--secondary:hover,
+a.tp-btn--secondary:active,
+a.tp-btn--quiet:hover,
+a.tp-btn--quiet:active { color: var(--text-primary); }
+a.tp-btn:focus-visible { border-radius: var(--radius-control); }

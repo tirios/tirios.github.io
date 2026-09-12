@@ -1,0 +1,7 @@
+/* Tiri Pestrivas typefaces.
+   SUBSTITUTION NOTICE: no font binaries were supplied. These are Google Fonts chosen to
+   match the brief ("all-grotesque, one family, many weights" + technical monospace).
+   Schibsted Grotesk: a Swiss-editorial grotesque with real weight range and slightly
+   humanist digits. JetBrains Mono: even colour, unambiguous 0/O/1/l, good at 11px.
+   Swap this @import for local @font-face rules when licensed files arrive. */
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap");

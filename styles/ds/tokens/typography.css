@@ -1,0 +1,61 @@
+:root{
+/* ---- families ---- */
+--font-sans:"Schibsted Grotesk","Helvetica Neue",Helvetica,sans-serif;
+--font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+--font-display:var(--font-sans);
+--font-body:var(--font-sans);
+--font-label:var(--font-sans);
+--font-numeric:var(--font-mono);
+--font-code:var(--font-mono);
+
+/* ---- size scale ---- */
+--fs-2xs:10px;
+--fs-xs:11px;
+--fs-sm:12px;
+--fs-md:13px;
+--fs-base:15px;
+--fs-prose:17px;
+--fs-lg:20px;
+--fs-xl:26px;
+--fs-2xl:34px;
+--fs-3xl:46px;
+--fs-4xl:62px;
+--fs-display:84px;
+
+/* ---- weights: the family carries the hierarchy ---- */
+--fw-regular:400; /* @kind font */
+--fw-medium:500; /* @kind font */
+--fw-semibold:600; /* @kind font */
+--fw-bold:700; /* @kind font */
+--fw-black:800; /* @kind font */
+
+/* ---- line heights ---- */
+--lh-flat:1; /* @kind font */
+--lh-tight:1.08; /* @kind font */
+--lh-snug:1.22; /* @kind font */
+--lh-label:1.3; /* @kind font */
+--lh-body:1.45; /* @kind font */
+--lh-prose:1.62; /* @kind font */
+
+/* ---- tracking: tightens as type grows, opens as it shrinks ---- */
+--tracking-display:-0.035em;
+--tracking-title:-0.022em;
+--tracking-tight:-0.012em;
+--tracking-normal:0;
+--tracking-label:0.1em;
+--tracking-micro:0.14em;
+--tracking-mono:-0.01em;
+
+/* ---- composed roles ---- */
+--type-display:var(--fw-semibold) var(--fs-display)/var(--lh-tight) var(--font-sans);
+--type-title:var(--fw-semibold) var(--fs-2xl)/var(--lh-snug) var(--font-sans);
+--type-heading:var(--fw-semibold) var(--fs-lg)/var(--lh-snug) var(--font-sans);
+--type-subhead:var(--fw-medium) var(--fs-base)/var(--lh-body) var(--font-sans);
+--type-prose:var(--fw-regular) var(--fs-prose)/var(--lh-prose) var(--font-sans);
+--type-body:var(--fw-regular) var(--fs-base)/var(--lh-body) var(--font-sans);
+--type-caption:var(--fw-regular) var(--fs-sm)/var(--lh-body) var(--font-sans);
+--type-label:var(--fw-semibold) var(--fs-2xs)/var(--lh-label) var(--font-sans);
+--type-numeric:var(--fw-regular) var(--fs-md)/var(--lh-flat) var(--font-mono);
+--type-figure:var(--fw-medium) var(--fs-xl)/var(--lh-flat) var(--font-mono);
+--type-annotation:var(--fw-regular) var(--fs-xs)/var(--lh-label) var(--font-mono);
+}
