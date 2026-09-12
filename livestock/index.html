@@ -34,6 +34,12 @@
   .top{position:fixed; left:0; right:0; top:0; z-index:5; display:flex; align-items:center; gap:var(--space-6); padding:var(--space-3) var(--space-6);
     font-size:11px; letter-spacing:.08em; text-transform:uppercase; pointer-events:none; white-space:nowrap;}
   .top b{font-weight:600;} .top span{color:color-mix(in srgb,var(--color-text) 60%,transparent); font-variant-numeric:tabular-nums;}
+  /* The strip of cross-links. It sits inside .top, which is pointer-events:none so
+     the bar does not eat clicks meant for the map, so the links have to opt back in. */
+  .top .navlinks{display:flex; gap:var(--space-5); flex-wrap:wrap; margin-left:auto;
+    pointer-events:auto;}
+  .top .navlinks a{margin-left:0; border-bottom:0; color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  .top .navlinks a:hover{color:var(--color-text); border-bottom:0;}
   .top .live{display:inline-flex; align-items:center; gap:6px;} .top .live::before{content:""; width:7px; height:7px; background:var(--color-accent); animation:pulse 2.4s infinite;}
   @keyframes pulse{0%,100%{opacity:1} 50%{opacity:.25}}
   .top a{pointer-events:auto; margin-left:auto; color:var(--color-text); text-decoration:none; border-bottom:2px solid var(--color-text); padding-bottom:1px;}
@@ -166,7 +172,7 @@
   </svg>
   <div id="tip" role="status" aria-live="polite"></div>
 </div>
-<div class="top"><b>Livestock provenance</b><span class="live">FAOSTAT QCL · release 2025-12-31</span><span class="opt" id="clock"></span><a href="map-2022.html">Open as figure</a></div>
+<div class="top"><b>Livestock provenance</b><span class="live">FAOSTAT QCL · release 2025-12-31</span><span class="opt" id="clock"></span><span class="navlinks"><a href="../">Back to the site</a><a href="map-2022.html">The figure</a><a href="post.html">How this was made</a></span></div>
 <div class="legend" id="hlegend"></div>
 <!-- Glyphs only. The zoom-level readout and the word Reset were text floating over the
      ocean with nothing around them, and neither told a reader anything they could not
@@ -537,7 +543,7 @@ function show(path,ev){
     '<table><tr><th>Area</th><th>Item</th><th>Year</th><th>Value</th><th class="flag">Flag</th></tr>'+
     '<tr><td>'+esc(area||path.__n)+'</td><td>'+esc(species)+'</td><td>'+YEAR+'</td><td>'+(h!=null?Math.round(h).toLocaleString('en-AU'):'—')+'</td>'+
     '<td class="flag"><span>'+(COLOURS[f]?f:'—')+'</span></td></tr></table>'+
-    '<span class="h">'+(h!=null?fmtHead(h)+' '+unit(species)+'. ':'')+'The flag is the column downstream users drop.</span>';
+    '<span class="h">'+(h!=null?fmtHead(h)+' '+unit(species)+'.':'')+'</span>';
   tip.style.display='block';
   const r=stage.getBoundingClientRect();
   let x=ev.clientX-r.left+14, y=ev.clientY-r.top+14;
@@ -575,10 +581,35 @@ async function embeddedFont(){
 async function renderCanvas(scale){
   const fcss=await embeddedFont();
   return new Promise(function(resolve,reject){
-    const svg=$('map'), P=PROJS[proj], total=TOP+P.H+BOTTOM;
+    const svg=$('map'), P=PROJS[proj];
+    // The story page draws no header: its title and legend are HTML that sits beside the
+    // SVG, so a serialised clone was a bare world with nothing saying what the colours
+    // meant or which species it was. A downloaded PNG has to stand on its own, so when
+    // there is no header band the export builds one, using the same elements the figure
+    // page uses and the same layout.
+    const EXPORT_TOP=336, exTop=TOP||EXPORT_TOP, total=exTop+P.H+BOTTOM;
     const clone=svg.cloneNode(true);
     if(fcss){ const fs=document.createElementNS(svgNS,'style'); fs.textContent=fcss; clone.insertBefore(fs,clone.firstChild); }
     clone.querySelectorAll('.hover').forEach(function(e){e.classList.remove('hover');});
+    if(!TOP){
+      // Push the drawing down to clear the band, then fill it. The clip path is
+      // userSpaceOnUse and is referenced from inside #plot, so it travels with it.
+      ['plot','rule'].forEach(function(id){
+        const el=clone.querySelector('#'+id);
+        if(el) el.setAttribute('transform','translate(0,'+exTop+')');
+      });
+      const bg=clone.querySelector('rect');
+      if(bg) bg.setAttribute('fill',GROUND);
+      const lg=clone.querySelector('#legend');
+      if(lg){ lg.removeAttribute('style'); lg.setAttribute('transform','translate(40,152)'); }
+      [['kick','k0',34],['sub','t2',84],['sub2','t3',114]].forEach(function(spec){
+        const src=$(spec[0]); if(!src) return;
+        const t=document.createElementNS(svgNS,'text');
+        t.setAttribute('class',spec[1]); t.setAttribute('x',40); t.setAttribute('y',spec[2]);
+        t.textContent=src.textContent;
+        clone.insertBefore(t,clone.querySelector('#legend'));
+      });
+    }
     // In the export the stroke should scale with the render size; non-scaling-stroke would
     // pin it to a fraction of a device pixel in a 4800 px image and alias away.
     const ov=document.createElementNS(svgNS,'style');
@@ -685,8 +716,15 @@ const io=new IntersectionObserver(function(es){
 chapters.forEach(function(c){io.observe(c);});
 // explore: engage full pointer control once the last chapter is reached
 const ioX=new IntersectionObserver(function(es){ es.forEach(function(e){ document.body.classList.toggle('explore', e.isIntersecting && e.intersectionRatio>.9); }); },{threshold:[.9]});
-function exploreH(){ document.documentElement.style.setProperty('--explore-h', $('explorecard').offsetHeight+'px'); }
-window.addEventListener('resize',exploreH); exploreH(); new ResizeObserver(exploreH).observe($('explorecard'));
+// The card's height lifts the legend and zoom controls clear of the explore toolbar.
+// Guarded because a ResizeObserver can fire once more while the page is being torn
+// down, after the element has been detached, which threw an uncaught TypeError on
+// every load. Nothing broke, since the value had already been set, but a published
+// page should not log an error.
+function exploreH(){ const c=$('explorecard'); if(!c) return;
+  document.documentElement.style.setProperty('--explore-h', c.offsetHeight+'px'); }
+window.addEventListener('resize',exploreH); exploreH();
+if($('explorecard')) new ResizeObserver(exploreH).observe($('explorecard'));
 $('again').addEventListener('click',function(){ $('drillx').click(); window.scrollTo({top:0,behavior:'smooth'}); });
 ioX.observe(document.querySelector('.chapter.explore'));
 // counter

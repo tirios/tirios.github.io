@@ -133,6 +133,18 @@ a.wordmark:active {
   gap: clamp(24px, 4vw, 48px);
   align-items: start;
 }
+/* The image well is an anchor, so it needs an explicit display and it must not take
+   the base stylesheet's link colour or underline. The cue sits over the bottom-left
+   corner in the same idiom as the write-up's map figure. */
+.project__well { display: block; text-decoration: none; color: inherit; }
+.project__well:hover { text-decoration: none; }
+.project__well:hover .project__cue { background: var(--tp-teal-700, #0B5C56); }
+.project__cue {
+  position: absolute; left: 0; bottom: 0;
+  background: var(--text-primary, #141618); color: var(--surface-page, #FFFFFF);
+  font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
+  padding: .5rem .8rem;
+}
 .project__well {
   position: relative;
   width: 100%;
